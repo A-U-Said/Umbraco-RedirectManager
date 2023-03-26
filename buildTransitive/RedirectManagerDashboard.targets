@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RedirectManagerContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\RedirectManagerDashboard\**\*.*</RedirectManagerContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyRedirectManagerAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <RedirectManagerContentFiles Include="$(RedirectManagerContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying RedirectManager files: $(RedirectManagerContentFilesPath) - #@(RedirectManagerContentFiles->Count()) files" Importance="high" />
+    <Copy SourceFiles="@(RedirectManagerContentFiles)" DestinationFiles="@(RedirectManagerContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\RedirectManagerDashboard\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearRedirectManagerAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <RedirectManagerDir Include="$(MSBuildProjectDirectory)\App_Plugins\RedirectManagerDashboard\" />
+    </ItemGroup>
+    <Message Text="Clear old RedirectManager data" Importance="high" />
+    <RemoveDir Directories="@(RedirectManagerDir)" />
+  </Target>
+</Project>

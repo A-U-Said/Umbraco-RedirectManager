@@ -1,0 +1,57 @@
+.rdm-dashboard {
+	background: #fff;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.16);
+}
+
+.rdm-dashboard > div {
+	padding: 20px;
+}
+
+ul.nodelist {
+	margin: 0.75em 0;
+	padding: 0 1em;
+	list-style: none;
+}
+
+
+li.nodeitem {
+	cursor: pointer;
+	height: 25px;
+}
+
+li.nodeitem *:hover {
+	background: #f3f1f1;
+	color: #2152a3;
+}
+
+li.nodeitem * {
+	font-size: 16px;
+}
+
+.selected {
+	background: #cdcdcd;
+}
+
+.node-content-tree {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+button.previous {
+	width: 75px;
+	margin-right: 2px;
+}
+
+button.submit {
+	width: 150px;
+}
+
+li.error {
+	color: #e40613;
+}
+
+p.response-message {
+	color: #2bc37c;
+}

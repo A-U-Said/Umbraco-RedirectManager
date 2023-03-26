@@ -1,0 +1,20 @@
+{
+    "dashboards":  [
+      {
+        "alias": "RedirectManagerDashboard",
+        "view": "~/App_Plugins/RedirectManagerDashboard/Frontend/Views/RedirectManagerDashboard.html",
+        "sections": [ "settings" ],
+        "weight": 20,
+        "access": [
+          { "grant": "admin" }
+        ]
+      }
+    ],
+  javascript: [
+    "~/App_Plugins/RedirectManagerDashboard/Frontend/Controllers/RedirectManagerDashboard.controller.js",
+    "~/App_Plugins/RedirectManagerDashboard/Frontend/Resources/RedirectManagerDashboard.resource.js"
+  ],
+  "css": [
+	"~/App_Plugins/RedirectManagerDashboard/Frontend/Styles/RedirectManagerDashboard.css"
+  ]
+}

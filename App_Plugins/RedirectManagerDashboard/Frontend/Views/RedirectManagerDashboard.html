@@ -1,0 +1,35 @@
+﻿<div ng-controller="RedirectManagerDashboard as vm" class="rdm-dashboard">
+	<div>
+		<h3>Redirect Manager Dashboard</h3>
+		
+		<input type="text" ng-model="vm.originalUrl" style="width: 540px;" placeholder="URL to redirect from"/>
+		<select ng-model="vm.selectedHomePage" ng-change="updateSelectedHomePage()">
+			<option value="" disabled selected>Destination content</option>
+			<option ng-repeat="homepage in vm.HomePages" ng-value="{{homepage}}">{{homepage.Name}}</option>
+		</select>
+		
+		<div ng-if="vm.responseMessage != ''">
+			<p class="response-message">{{vm.responseMessage}}</p>
+		</div>		
+		<div ng-if="!isEmptyArray(vm.errors)">
+			<ul>
+				<li class="error" ng-repeat="error in vm.errors">{{error}}</li>
+			</ul>
+		</div>
+
+		<div ng-if="((vm.selectedHomePage | json) != '{}') && (vm.selectedHomePage)" class="node-content-tree">
+			<div>
+				<button ng-disabled="vm.Nodes[0].Level < 3" ng-click="navigateUpDirectory()" class="btn ng-pristine ng-untouched ng-valid ng-empty previous">&#171; Back</button>
+				<button ng-show="vm.selectedNode.NodeType === 'sectionPage'" ng-click="getSelectableNodeChildren()" class="btn ng-pristine ng-untouched ng-valid ng-empty">Open</button>
+			</div>
+			<ul class="nodelist">
+				<li class="nodeitem" ng-repeat="node in vm.Nodes">
+					<div ng-click="nodeClicked(node)" class="{{node.Id == vm.selectedNode.Id ? 'selected' : ''}}">
+						<i class="{{node.Icon}}"></i> {{node.Name}}
+					</div>
+				</li>
+			</ul>
+			<button ng-click="createNewRedirect()" class="btn btn-success umb-outline submit">Create Redirect</button>
+		</div>
+	</div>
+</div>
